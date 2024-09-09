@@ -87,17 +87,12 @@
 \subsubsection*{Notes}
 Learned about some tactics and theorems
 
-rfl: a tactic that proves theorems that take the form of X = X
-
-rw: a tactic that rewrites a proof
-
-one\_eq\_succ\_zero: a theorem that proves 1 = succ 0 (there are also other similar existing theorems like two\_eq\_succ\_one and so on)
-
-add\_zero: a theorem that proves a + 0 = a.
-
-add\_succ: a theorem that proves a + succ b = succ(a + b)
-
-succ\_eq\_add\_one: a theorem that proves succ a = a + 1
+rfl: a tactic that proves theorems that take the form of X = X \\
+rw: a tactic that rewrites a proof\\
+one\_eq\_succ\_zero: a theorem that proves 1 = succ 0 (there are also other similar existing theorems like two\_eq\_succ\_one and so on)\\
+add\_zero: a theorem that proves a + 0 = a.\\
+add\_succ: a theorem that proves a + succ b = succ(a + b)\\
+succ\_eq\_add\_one: a theorem that proves succ a = a + 1\\
 
 \subsubsection*{Homework}
 Problem 5: \\
@@ -200,7 +195,180 @@ programming help us better current languages (e.g. python, rust)?
 
 \subsection{Week 2}
 
+\subsubsection*{Notes}
+Recursion as a concept using the Towers of Hanoi:
+It is broken down into:
+ moving a tower of n disks from x to y
+ moving a tower of n+1 disks when it is already known how to move a tower of n disks
+The algorithm is made up of a bunch of "pushs" and "pops"
+The logic overall is a bunch of back and forth movement of the disks 
 
+Lean:
+induction proof with: induction n with d hd
+succ\_add: proves that succ a + b = succ (a + b)
+add\_comm x y: proves that x + y = y + x
+add\_assoc: proves that a + b + c = a + (b + c)
+add\_right\_comm a b c: proves that a + b + c = a + c + b 
+
+\subsubsection*{Homework}
+Problem 1:\\
+n is in the natural number set\\
+Prove 0 + n = n.\\
+induction n with d hd - starting a proof by induction\\
+Now our first goal is:\\
+0 + 0 = 0\\
+rw[add\_zero] - proves that 0 + 0 = 0\\
+This is rewritten to:\\
+0 = 0\\
+rfl - this proves that both sides that look the same are equal to each other \\
+Now, we prove our second goal\\
+hd: 0 + d = d\\
+0 + succ d = succ d \\
+rw[add\_succ] - proves that 0 + succ d = succ (0 + d)\\
+This is rewritten to:\\
+succ (0 + d) = succ d\\
+rw[hd] - this replaces 0 + d with d\\
+This is rewritten to:\\
+succ d = succ d\\
+rfl - this proves that both sides that look the same are equal to each other \\
+
+Problem 2:\\
+a b is in the set of natural numbers\\
+Prove succ a + b = succ (a + b)\\
+inductin b with d hd - starting a proof by induction\\
+Now our first goal is:\\
+succ a + 0 = succ (a + 0)\\
+rw[add\_zero] - proves that succ a + 0 = succ a\\
+This is rewritten to:\\
+succ a = succ(a + 0)\\
+rw[add\_zero] - proves that succ (a + 0) = succ a\\
+This is rewritten to:\\
+succ a = succ a\\
+rfl - this proves that both sides that look the same are equal to each other \\
+Now, we prove our second goal\\
+hd: succ a + d = succ (a + d)\\
+succ a + succ d = succ (a + succ d)\\
+rw[add\_succ] - proves that succ a + succ d = succ (succ a + d)\\
+This is rewritten to:\\
+succ (succ a + d) = succ (a + succ d)\\
+rw[hd] - this replaces succ a + d with succ (a + d)\\
+This is rewritten to:\\
+succ (succ (a + d)) = succ (a + succ d)\\
+rw[add\_succ] - proves that succ (a + succ d) = succ (succ (a + d))\\
+This is rewritten to:\\
+succ (succ (a + d)) = succ (succ (a + d))\\
+rfl - this proves that both sides that look the same are equal to each other \\
+
+Problem 3:\\
+a b is in the set of natural numbers\\
+Prove a + b = b + a\\
+induction b with hd - starting a proof by induction\\
+Now our first goal is:\\
+a + 0 = 0 + a\\
+rw[zero\_add] - proves that 0 + a = a\\
+This is rewritten to:\\
+a + 0 = a\\
+rw[add\_zero] - proves that a + 0 = a\\
+This is rewritten to:\\
+a = a\\
+rfl - this proves that both sides that look the same are equal to each other \\
+Now, we prove our second goal\\
+n\_ih: a + hd = hd + a\\
+a + succ hd = succ hd + a\\
+rw[add\_succ] - proves that a + succ hd = succ (a + hd)\\
+This is rewritten to:\\
+succ (a + hd) = succ hd + a\\
+rw[succ\_add] - proves that succ hd + a = succ (hd + a)\\
+This is rewritten to:\\
+succ (a + hd) = succ (hd + a)\\
+rw[n\_ih] - replaces succ (a + hd) with succ (hd + a)\\
+This is rewritten to:\\
+succ (hd + a) = succ (hd + a)\\
+rfl - this proves that both sides that look the same are equal to each other \\
+
+Problem 4:\\
+a b c is in the set of natural numbers\\
+Prove a + b + c = a + (b + c)\\
+induction a with hd - starting a proof by induction\\
+Now our first goal is:\\
+0 + b + c = 0 + (b + c)\\
+rw[zero\_add] - proves that 0 + b = b\\
+This is rewritten to:\\
+b + c = 0 + (b + c)\\
+rw[zero\_add] - proves that 0 + (b + c) = b + c\\
+This is rewritten to:\\
+b + c = b + c\\
+rfl - this proves that both sides that look the same are equal to each other \\
+Now, we prove our second goal\\
+n\_ih: hd + b + c = hd + (b + c)\\
+succ hd + b + c = succ hd + (b + c)\\
+rw[succ\_add] - proves that succ hd + b + c = succ (hd + b) + c\\
+This is rewritten to:\\
+succ (hd + b) + c = succ hd + (b + c)\\
+rw[succ\_add] - proves that succ (hd + b) + c = succ (hd + b + c)\\
+This is rewritten to:\\
+succ (hd + b + c) = succ hd + (b + c)\\
+rw[n\_ih] - replaces succ (hd + b + c) with succ (hd + (b + c))\\
+This is rewritten to:\\
+succ (hd + (b + c)) = succ hd + (b + c)\\
+rw[succ\_add] - proves succ hd + (b + c) = succ (hd + (b + c))\\
+This is rewritten to:\\
+succ (hd + (b + c)) = succ (hd + (b + c))\\
+rfl - this proves that both sides that look the same are equal to each other \\
+
+Problem 5:\\
+a b c is in the set of natural numbers\\
+Prove a + b + c = a + c + b\\
+induction c with hd - starting a proof by induction\\
+Now our first goal is:\\
+a + b + 0 = a + 0 + b\\
+rw[add\_zero] - proves that b + 0 = b\\
+This is rewritten to:\\
+a + b = a + 0 + b\\
+rw[add\_zero] 0 proves that a + 0 = a\\
+This is rewritten to:\\
+a + b = a + b\\
+rfl - this proves that both sides that look the same are equal to each other \\
+Now, we prove our second goal\\
+n\_ih: a + b + hd = a + hd + b\\
+a + b + succ hd = a + succ hd + b\\
+rw[add\_succ] - proves that a + b + succ hd = succ (a + b + hd)\\
+This is rewritten to:\\
+succ (a + b + hd) = a + succ hd + b\\
+rw[add\_succ] - proves that a + succ hd + b = succ (a + hd) + b\\
+This is rewritten to:\\
+succ (a + b + hd) = succ (a + hd) + b\\
+rw[succ\_add] - proves that succ (a + hd) + b = succ (a + hd + b)\\
+This is rewritten to:\\
+succ (a + b + hd) = succ (a + hd + b)\\
+rw[n\_ih] - replaces a + b + hd with a + hd + b\\
+This is rewritten to\\
+succ (a + hd + b) = succ (a + hd + b)\\
+rfl - this proves that both sides that look the same are equal to each other \\
+
+Problem 5 Proof in Mathematics:\\
+a + b + c =  a + (b + c)\\
+0 + b + c = 0 + (b + c) - Basis\\
+b + c = 0 + (b + c) - Addition Identity\\
+b + c = b + c - Addition Identity\\
+Inductive Step:\\
+k + b + c = k + (b + c)\\
+The goal is to prove that Sk + b + c = Sk + (b + c)\\
+S(k + b + c) = Sk + (b + c) - Definition of Addition\\
+S(k + b + c) = S(k + (b + c)) - Definition of Addition\\
+S(k + (b + c)) = S(k + (b + c)) - Inductive Hypothesis\\
+Therefore, by the Axiom of induction a + b + c =  a + (b + c) for all a in the natural numbers set\\
+\\
+Math to Lean\\
+Basis: induction a with hd\\
+Addition Identity: zero\_add\\
+Definition of Addition: succ\_add\\
+Inductive Hypothesis: n\_ih\\
+
+\subsubsection*{Comments and Questions}
+The Towers of Hanoi reminded me of solving certain problems by simply using recursion. 
+I also remember applying this method to the Fibonacci sequence. This makes me wonder 
+how it transfers to math. How does recursion appear in mathematics or, specifically, in Lean?
 \subsection{\ldots}
 
 \ldots
