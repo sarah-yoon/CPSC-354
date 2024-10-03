@@ -3,30 +3,30 @@ This program is a calculator that uses Lark parsing for its expressions. It read
 
 ## Key Components
 ### Transformer Class
-Name: CalcTransformer
-Purpose: transforms the parsed expression into an AST.
-Methods in CalcTransformer:
-plus(self, items):
-Purpose: transforms the plus operation
+Name: CalcTransformer <br/>
+Purpose: transforms the parsed expression into an AST.<br/>
+Methods in CalcTransformer:<br/>
+plus(self, items):<br/>
+Purpose: transforms the plus operation<br/>
 
-minus(self, items):
-Purpose: transforms the minus operation
+minus(self, items):<br/>
+Purpose: transforms the minus operation<br/>
 
-times(self, items):
-Purpose: transforms the multiplication operation
+times(self, items):<br/>
+Purpose: transforms the multiplication operation<br/>
 
-power(self, items):
-Purpose: transforms the power operation
+power(self, items):<br/>
+Purpose: transforms the power operation<br/>
 
-neg(self, items):
-Purpose: transforms the negative operation
+neg(self, items):<br/>
+Purpose: transforms the negative operation<br/>
 
-log(self, items):
-Purpose: transforms the log operation
+log(self, items):<br/>
+Purpose: transforms the log operation<br/>
 
-num(self, items):
-Purpose: transforms a number
+num(self, items):<br/>
+Purpose: transforms a number<br/>
 
 ### Evaluation Function
-Name: evaluate(ast)
-Purpose: evaluates the AST and calculates it
+Name: evaluate(ast)<br/>
+Purpose: evaluates the AST and calculates it<br/>
