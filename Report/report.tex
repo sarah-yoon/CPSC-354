@@ -489,6 +489,37 @@ and\_intro (3)(10)(5)(6)\\
 \subsubsection*{Comments and Questions}
 How does lean help with problem solving when it comes to programming?\\
 
+\subsection{Week 6}
+\subsubsection*{Homework}
+Problem 1:\\
+have b := bakery\_service p\\
+exact b\\
+
+Problem 2:\\
+exact fun h : $C =>$ h\\
+
+Problem 3:\\
+exact fun $h =>$ and\_intro h.right h.left\\
+
+Problem 4:\\
+exact fun h : $C =>$ have a : A := h1 h; h2 a\\
+
+Problem 5:\\
+have q : Q := h1 p\\
+have t : T := h3 q\\
+exact h5 t\\
+               
+Problem 6:\\
+exact fun c : $C =>$\\
+  fun d : $D =>$\\
+    have cd : $C \land D$ := ⟨c, d⟩;\\
+    h cd    \\
+    
+Couldn't finish...
+
+\subsubsection*{Comments and Questions}
+Solving lean logic game is a simple view into proving theorems and the foundations of programming languages. When it comes to the lambda problems specifically, how do real-world challenges complicate the applications of lambda?
+
 \section{Lessons from the Assignments}
 
 
