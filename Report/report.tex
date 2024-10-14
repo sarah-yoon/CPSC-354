@@ -520,6 +520,58 @@ Couldn't finish...
 \subsubsection*{Comments and Questions}
 Solving lean logic game is a simple view into proving theorems and the foundations of programming languages. When it comes to the lambda problems specifically, how do real-world challenges complicate the applications of lambda?
 
+\subsection{Week 7}
+\subsubsection*{Homework}
+1.\\
+\[
+((\lambda m. \lambda n. m \, n) \, (\lambda f. \lambda x. f \, (f \, x))) \, (\lambda f. \lambda x. f \, (f \, (f \, x)))
+\]
+
+\[
+((\lambda m. \lambda n. m \, n) \, (\lambda f. \lambda x. f \, (f \, x))) \rightarrow \lambda n. (\lambda f. \lambda x. f \, (f \, x)) \, n
+\]
+
+\[
+(\lambda f. \lambda x. f \, (f \, x)) \, n \rightarrow \lambda x. n \, (n \, x)
+\]
+
+\[
+(\lambda n. \lambda x. n \, (n \, x)) \, (\lambda f. \lambda x. f \, (f \, (f \, x)))
+\]
+
+\[
+(\lambda n. \lambda x. n \, (n \, x)) \, (\lambda f. \lambda x. f \, (f \, (f \, x))) \rightarrow \lambda x. (\lambda f. \lambda x. f \, (f \, (f \, x))) \, ((\lambda f. \lambda x. f \, (f \, (f \, x))) \, x)
+\]
+
+\[
+(\lambda f. \lambda x. f \, (f \, (f \, x))) \, x \rightarrow \lambda x. x \, (x \, (x \, x))
+\]
+
+\[
+\lambda x. (\lambda f. \lambda x. f \, (f \, (f \, x))) \, (\lambda x. x \, (x \, (x \, x)))
+\]
+
+\[
+(\lambda f. \lambda x. f \, (f \, (f \, x))) \, (\lambda x. x \, (x \, (x \, x))) \rightarrow \lambda x. (\lambda x. x \, (x \, (x \, x))) \, ((\lambda x. x \, (x \, (x \, x))) \, x)
+\]
+
+\[
+(\lambda x. x \, (x \, (x \, x))) \, x \rightarrow x \, (x \, (x \, x))
+\]
+
+\[
+\lambda x. (\lambda x. x \, (x \, (x \, x))) \, (x \, (x \, (x \, x)))
+\]
+
+\[
+(\lambda x. x \, (x \, (x \, x))) \, (x \, (x \, (x \, x))) \rightarrow (x \, (x \, (x \, x))) \, ((x \, (x \, (x \, x))) \, ((x \, (x \, (x \, x))) \, (x \, (x \, (x \, x))))
+\]
+
+2.\\
+The lambda term implements addition on natural numbers. It is done by combing two Church numerals. It carries out addition by counting the the total number of times the function is being applied. 
+\subsubsection*{Comments and Questions}
+Can church numerals be used to represent recursive functions/processes?
+
 \section{Lessons from the Assignments}
 
 
