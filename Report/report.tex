@@ -589,9 +589,15 @@ When it comes to evaluation strategies in lambda calculus, what are the trade-of
 5. \[Y=\lambda f.(\lambda x.f(xx))(\lambda x.f(xx))\]
 
 \subsubsection*{Comments and Questions}
+How could different evaluation strategies impact the trace output produced by an interpreter?
 
 \subsection{Week 10}
 \subsubsection*{Homework}
+1. The challenge of working through Homework 8/9 and Assignment 3 was figuring out why the interpreter wouldn't completely evaluate everything.
+
+2. The key insight for Assignment 3 was just looking through the evaluation function and looking at where ecxactly it stopped evaluating the function and just returned whatever it found.
+
+3. The most interesting take away was from the homework and assignment was using the debugger to see how far the program would evaluate a lambda function. I never really use the debugger, so it was interesting to break things apart.
 \subsubsection*{Comments and Questions}
 How can the interpreter be expanded upon to handle more complex structures?
 
