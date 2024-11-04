@@ -572,6 +572,29 @@ The lambda term implements addition on natural numbers. It is done by combing tw
 \subsubsection*{Comments and Questions}
 Can church numerals be used to represent recursive functions/processes?
 
+\subsection{Week 8}
+\subsubsection*{Homework}
+Answers on week 9
+\subsubsection*{Comments and Questions}
+When it comes to evaluation strategies in lambda calculus, what are the trade-offs? How do these strategies affect performance and accuracy in a practical implementation?
+
+\subsection{Week 9}
+\subsubsection*{Homework}
+2. a is applied to b, which leads to (ab). Then, (ab) is applied to c, resulting in ((ab)c). Finally, ((ab)c) is applied to d, which leads to (((ab)c)d). (a) reduces to a it's already in its simplest form.
+
+3.When substituting a variable, wall instances of that variable are replaced. However, if the variable being substituted for is also bound, the meaning of the expression is changed. This is implemented by traversing the AST of the expression, checking for bound variables, and renaming them.
+
+4. No, not everything is the expected result.
+
+5. \[Y=\lambda f.(\lambda x.f(xx))(\lambda x.f(xx))\]
+
+\subsubsection*{Comments and Questions}
+
+\subsection{Week 10}
+\subsubsection*{Homework}
+\subsubsection*{Comments and Questions}
+How can the interpreter be expanded upon to handle more complex structures?
+
 \section{Lessons from the Assignments}
 
 
