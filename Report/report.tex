@@ -601,6 +601,41 @@ How could different evaluation strategies impact the trace output produced by an
 \subsubsection*{Comments and Questions}
 How can the interpreter be expanded upon to handle more complex structures?
 
+\subsection{Week 10}
+\subsubsection*{Homework}
+Pictures for each of the ARSs: \\
+\includegraphics[scale=0.1]{ar.jpg}
+
+Example of ARS for each of the possible 8 combinations\\
+
+Confluent = True, Terminating: True, Has A Unique Normal Form: True\\
+\[A={a,b}, R={(a,b)}\]
+
+Confluent = True, Terminating: True, Has A Unique Normal Form: False\\
+\[A={a,b,c}, R={(a,b),(a,c)}\]
+
+Confluent = True, Terminating: False, Has A Unique Normal Form: True\\
+\[A={a}, R={(a,a)}\]
+
+Confluent = True, Terminating: False, Has A Unique Normal Form: False\\
+\[A={a,b}, R={(a,a),(a,b)}\]
+
+Confluent = False, Terminating: True, Has A Unique Normal Form: True\\
+\[A={a,b,c}, R={(a,b),(b,b)}\]
+
+Confluent = False, Terminating: True, Has A Unique Normal Form: True\\
+\[A={a,b,c}, R={(a,b),(a,c)}\]
+
+Confluent = False, Terminating: False, Has A Unique Normal Form: True\\
+\[A={a,b}, R={(a,b),(b,a)}\]
+
+Confluent = False, Terminating: False, Has A Unique Normal Form: False\\
+\[A={a,b,c}, R={(a,b),(b,b),(a,c),(c,c)}\]
+
+\subsubsection*{Comments and Questions}
+
+
+
 \section{Lessons from the Assignments}
 
 
