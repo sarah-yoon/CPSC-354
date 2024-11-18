@@ -601,7 +601,7 @@ How could different evaluation strategies impact the trace output produced by an
 \subsubsection*{Comments and Questions}
 How can the interpreter be expanded upon to handle more complex structures?
 
-\subsection{Week 10}
+\subsection{Week 11}
 \subsubsection*{Homework}
 Pictures for each of the ARSs: \\
 \includegraphics[scale=0.1]{ar.jpg}
@@ -635,6 +635,63 @@ Confluent = False, Terminating: False, Has A Unique Normal Form: False\\
 \subsubsection*{Comments and Questions}
 What characteristics of an ARS (confluency, termination, etc) is important when it comes to programming languages and why?
 
+\subsection{Week 11}
+\subsubsection*{Homework}
+1. $ba -> ab$ \\
+The number of substrings is finite. Therefore, the ARS must terminate. \\
+The normal form is where b characters appear before a characters. \\
+It is confluent because it only shifts the positions of the characters. It does not make a new substring. \\
+The ARS sorts the string so that the b characters appear before the a characters. \\
+2. \\
+$aa -> a$ \\
+$bb -> a$\\
+$ab -> b$ \\
+$ba -> b$ \\
+The ARS terminates because the rules reduces the length of the string. \\
+The normal forms are either a or b. \\
+There is not string that reduces to both a and b. \\
+It's confluent because each rewrite reduces the length of the string, and the choice of application does not affect the final result. \\
+All the strings become become equal to their normal forms by switching from $->$ to =. \\
+= is determined by whether the string has an even or odd number of a's and b's.\\
+If the mod is 2, then the answer is a. if the mod is 1, then the answer is b. \\
+The ARS computes the parity of the number of a's and b's. \\
+3.\\
+$aa -> a$\\
+$bb -> b$\\
+$ba -> ab$\\
+$ab -> ba$\\
+The ARS does not terminate because the rewrites alternate and end up looping. \\
+There are no normal forms. \\
+New Rules: $ab -> b$ AND $ba -> a$\\
+The ARS computes a simplified form. \\
+4.\\
+$ab -> ba$ \\
+$ba -> ab$\\
+The ARS does not terminate because it constantly switches between ab and ba.\\
+There are no normal forms. \\
+New Rules: $ab -> a$ AND $ba -> b$ \\
+The ARS sorts the characters deterministically.  \\
+5.\\
+$ab -> ba$\\
+$ba -> ab$\\
+$aa ->$\\
+$b ->$ \\
+Reduce Examples: \\
+$abba -> aabb -> ab -> ba$ (loops)\\
+$bababa ->$ infinite alternations \\
+The ARS is not terminating because the $ab -> ba$ causes infinite alternations \\
+There are two equivalence classes: \\
+- string with a equal number of a's and b's are equal. \\
+- strings with an unequal number of a's and b's can be reduced. \\
+New Rules: $ab -> a$ AND $ba -> b$ \\
+Question: Does a string reduce to an empty one?  \\
+Answer: The string will be empty depending on the number of a's and b's. \\
+5b. \\
+Rewrite: $aa -> a$ AND $b ->$ \\
+The equivalence class is not changed. \\
+
+\subsubsection*{Comments and Questions}
+How does modularity infuence the properties of an ARS? \\
 
 \section{Lessons from the Assignments}
 
