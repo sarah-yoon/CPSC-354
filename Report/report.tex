@@ -635,7 +635,7 @@ Confluent = False, Terminating: False, Has A Unique Normal Form: False\\
 \subsubsection*{Comments and Questions}
 What characteristics of an ARS (confluency, termination, etc) is important when it comes to programming languages and why?
 
-\subsection{Week 11}
+\subsection{Week 12}
 \subsubsection*{Homework}
 1. $ba -> ab$ \\
 The number of substrings is finite. Therefore, the ARS must terminate. \\
@@ -692,6 +692,36 @@ The equivalence class is not changed. \\
 
 \subsubsection*{Comments and Questions}
 How does modularity infuence the properties of an ARS? \\
+
+\subsection{Week 13}
+\subsubsection*{Homework}
+Compute fact 3: \\
+
+\begin{align*}
+& \text{let rec } fact = \lambda n. \text{ if } n=0 \text{ then } 1 \text{ else } n * fact (n-1) \text{ in } fact \ 3 \\
+& \text{fact = fix } F \text{ in fact } 3 \quad (\text{def of let rec}) \\
+& (fix \ F) \ 3 \quad (\text{def of let}) \\
+& (\lambda f. (\lambda x. f (x \ x)) (\lambda x. f (x \ x))) F \ 3 \quad (\text{def of fix}) \\
+& (\lambda x. F (x \ x)) (\lambda x. F (x \ x)) \ 3 \quad (\text{beta rule}) \\
+& F ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) \ 3 \quad (\text{beta rule}) \\
+& (\lambda fact. \lambda n. \text{ if } n=0 \text{ then } 1 \text{ else } n * fact (n-1)) ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) \ 3 \quad (\text{beta rule}) \\
+& (\lambda n. \text{ if } n=0 \text{ then } 1 \text{ else } n * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) (n-1)) \ 3 \quad (\text{beta rule}) \\
+& \text{if } 3=0 \text{ then } 1 \text{ else } 3 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) (3-1) \quad (\text{beta rule}) \\
+& 3 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) (3-1) \quad (\text{def of if}) \\
+& 3 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) \ 2 \quad (\text{arithmetic}) \\
+& 3 * (2 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) (2-1)) \quad (\text{beta rule and arithmetic}) \\
+& 3 * (2 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) \ 1) \quad (\text{arithmetic}) \\
+& 3 * (2 * (1 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) (1-1))) \quad (\text{beta rule and arithmetic}) \\
+& 3 * (2 * (1 * ((\lambda x. F (x \ x)) (\lambda x. F (x \ x))) \ 0)) \quad (\text{arithmetic}) \\
+& 3 * (2 * (1 * 1)) \quad (\text{def of if}) \\
+& 3 * (2 * 1) \\
+& 3 * 2 \\
+& 6 \quad (\text{arithmetic}) \\
+& fact \ 3 = 6
+\end{align*}
+
+\subsubsection*{Comments and Questions}
+I noticed while computing fact 3, there was a repetition of substitution and expansion of the fixed point combinator. Is there a way to make this process more efficient?
 
 \section{Lessons from the Assignments}
 
